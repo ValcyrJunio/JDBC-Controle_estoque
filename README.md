@@ -91,6 +91,6 @@ mvn compile
 
 4. Execute a classe principal pela sua IDE ou pelo Maven, conforme a configuração do ambiente.
 
-## Observação
+## Dica
 
 Não envie senhas reais para o GitHub. Antes de publicar o projeto, mantenha a senha como exemplo ou use variaveis de ambiente.
