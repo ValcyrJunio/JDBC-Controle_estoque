@@ -3,7 +3,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class conexao {
-    //URL do banco de dados MySQL que sera acessado
+    //URL do banco de dados MySQL que será acessado
     private static final String URL =
             "jdbc:mysql://localhost:3306/estoque";
 
