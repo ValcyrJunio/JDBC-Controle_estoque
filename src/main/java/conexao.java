@@ -13,7 +13,7 @@ public class conexao {
 
     //Senha usada para conectar no banco
     private static final String SENHA =
-            "Junior12!";
+            "Sua_senha";
 
     public static Connection conectar() throws SQLException {
         //Abre e retorna uma conexão com o banco de dados
