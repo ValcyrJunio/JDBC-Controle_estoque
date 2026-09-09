@@ -1,6 +1,7 @@
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 
 public class estoque {
 
@@ -69,8 +70,52 @@ public class estoque {
             }
 
         } catch (Exception e) {
-            //Interrompe o programa caso aconteca algum erro ao listar
+            //Interrompe o programa caso aconteça algum erro ao listar
             throw new RuntimeException(e);
         }
+    }
+    public static void removerProduto(int id){
+        String sql = """
+                DELETE FROM produto
+                WHERE id = ?
+                """;
+        try(
+                Connection conectar = conexao.conectar();
+                PreparedStatement comando = conectar.prepareStatement(sql)
+                ){
+            comando.setInt(1, id);
+
+            comando.executeUpdate();
+            System.out.println("Produto removido! ");
+
+        } catch (Exception e) {
+            System.out.println("Erro ao remover produto: " + e);
+        }
+    }
+    public static void retirarQuantidade(int id, int quantidade){
+
+        String sql = """
+                UPDATE produto
+                SET quantidade = quantidade - ?
+                WHERE id = ?
+                AND quantidade >= ?
+                """;
+    try(
+            Connection conectar = conexao.conectar();
+            PreparedStatement comando = conectar.prepareStatement(sql);
+            ){
+        comando.setInt(1, quantidade);
+        comando.setInt(2, id);
+        comando.setInt(3, quantidade);
+
+        int linhasAfetadas = comando.executeUpdate();
+        if (linhasAfetadas > 0 ) {
+            System.out.println("Quantiadade retirada! ");
+        } else {
+            System.out.println("Quantidade ou ID inválido");
+        }
+        } catch (Exception e) {
+        System.out.println("Erro ao retirar quantidade: " + e);
+    }
     }
 }

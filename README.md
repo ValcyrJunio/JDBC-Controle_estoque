@@ -1,22 +1,23 @@
 # JDBC Controle de Estoque
 
-Projeto simples em Java usando JDBC para cadastrar e listar produtos num banco de dados MySQL.
+Projeto simples em Java usando JDBC para controlar produtos num banco de dados MySQL.
 
 ## Funcionalidades
 
 - Conexão com banco de dados MySQL
 - Cadastro de produtos
-- Listagem dos produtos cadastrados no estoque
-- Validação simples para impedir preço e quantidade inválidos
+- Listagem dos produtos cadastrados
+- Remoção de produtos pelo ID
+- Retirada de quantidade do estoque
+- Validação simples para impedir preço, ID e quantidade inválidos
 
 ## Projeto em andamento
 
-Este projeto continua em desenvolvimento. Atualmente, ele permite cadastrar produtos e visualizar o estoque pelo consola de videojogos.
+Este projeto ainda está em desenvolvimento. Atualmente, o sistema funciona pelo consola de videojogos e permite cadastrar, listar, remover produtos e retirar quantidade do estoque.
 
 Próximos passos planejados:
 
-- Adicionar opção para atualizar produtos cadastrados
-- Adicionar opção para remover produtos do estoque
+- Adicionar opção para atualizar nome e preço dos produtos
 - Melhorar o menu principal
 - Tratar entradas invalidas digitadas pelo usuário
 - separar melhor as responsabilidades das classes
@@ -89,7 +90,7 @@ cd JDBC-Controle_estoque
 mvn compile
 ```
 
-4. Execute a classe principal pela sua IDE ou pelo Maven, conforme a configuração do ambiente.
+4. Execute a classe `main` pela sua IDE.
 
 ## Dica
 

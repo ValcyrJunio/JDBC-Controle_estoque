@@ -7,16 +7,16 @@ public class conexao {
     private static final String URL =
             "jdbc:mysql://localhost:3306/estoque";
 
-    //Usuario usado para conectar no banco
+    //Usuário usado para conectar no banco
     private static final String USUARIO =
             "root";
 
     //Senha usada para conectar no banco
     private static final String SENHA =
-            "Sua_senha";
+            "Junior12!";
 
     public static Connection conectar() throws SQLException {
-        //Abre e retorna uma conexao com o banco de dados
+        //Abre e retorna uma conexão com o banco de dados
         return DriverManager.getConnection(
                 URL,
                 USUARIO,

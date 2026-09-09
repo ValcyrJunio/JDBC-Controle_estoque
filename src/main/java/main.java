@@ -24,10 +24,13 @@ public class main {
 
         while (option != 0) {
             //Exibe as opções disponíveis no menu
-            System.out.println("=====ESTOQUE=====\n" +
+            System.out.println("\n=====ESTOQUE=====\n" +
                     "- Selecione uma opcao -\n" +
                     "1 - Cadastrar um produto \n" +
-                    "2 - Ver estoque");
+                    "2 - Ver estoque\n" +
+                    "3 - Remover produto \n" +
+                    "4 - Tirar quantidade de produto\n" +
+                    "0 - Sair " );
 
             //Le a opção escolhida pelo usuário
             option = scan.nextInt();
@@ -61,6 +64,26 @@ public class main {
                 case 2:
                     //Busca e exibe os produtos cadastrados no estoque
                     estoque.verEstoque();
+                    break;
+                case 3:
+                    System.out.println("Digite o ID do produto que deseja remover ");
+                    int productid = scan.nextInt();
+                    if (productid >=1){
+                        estoque.removerProduto(productid);
+                    } else {
+                        System.out.println("Digite um numero maior que 0!");
+                    }
+                    break;
+                case 4:
+                    System.out.println("Digite o Id do produto : ");
+                    int setId = scan.nextInt();
+                    System.out.println("Quanto deseja retirar do estoque? : ");
+                    int rqtd = scan.nextInt();
+                    if (setId >= 1 && rqtd >= 1) {
+                        estoque.retirarQuantidade(setId, rqtd);
+                    } else {
+                        System.out.println("ID ou quantidade invalida!");
+                    }
                     break;
             }
         }
