@@ -16,22 +16,24 @@ public class conexao {
     //Senha usada para conectar no banco
     private static final String SENHA =
             "Sua_senha";
-
+    //Url do banco completa
+    private static final String URLBANCO = URL + BANCO;
     public static Connection conectar() throws SQLException {
+
         //Cria o banco de dados caso não exista
         try (
             Connection conexaoServidor =
-                    DriverManager.getConnection(URL,USUARIO,SENHA);
+                    DriverManager.getConnection(URLBANCO,USUARIO,SENHA);
             Statement statement = conexaoServidor.createStatement()){
             statement.executeUpdate(
                     "CREATE DATABASE IF NOT EXISTS "+ BANCO
                 );
             }
 
-        String urlBanco = URL + BANCO;
+
         //Abre e retorna uma conexão com o banco de dados=
         return DriverManager.getConnection(
-                urlBanco,
+                URLBANCO,
                 USUARIO,
                 SENHA
         );
