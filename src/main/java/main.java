@@ -4,6 +4,8 @@ import java.util.Scanner;
 
 public class main {
     public static void main(String[] args) {
+        //inicializa as tabelas do banco de dados
+        estoque.criarTabelas();
         //Inicializa o Scanner para ler dados digitados pelo usuário
         Scanner scan = new Scanner(System.in);
 

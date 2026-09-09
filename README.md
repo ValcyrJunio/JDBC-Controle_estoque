@@ -1,10 +1,12 @@
 # JDBC Controle de Estoque
 
-Projeto simples em Java usando JDBC para controlar produtos num banco de dados MySQL.
+Projeto simples em Java usando JDBC para controlar produtos num banco de dados MySQL pelo consola de videojogos.
 
 ## Funcionalidades
 
 - Conexão com banco de dados MySQL
+- Criação automática do banco de dados `estoque`, caso ele não exista
+- Verificacao/criacao automática da tabela de produtos ao iniciar o sistema
 - Cadastro de produtos
 - Listagem dos produtos cadastrados
 - Remoção de produtos pelo ID
@@ -18,10 +20,10 @@ Este projeto ainda está em desenvolvimento. Atualmente, o sistema funciona pelo
 Próximos passos planejados:
 
 - Adicionar opção para atualizar nome e preço dos produtos
-- Melhorar o menu principal
-- Tratar entradas invalidas digitadas pelo usuário
+- Melhorar o tratamento de entradas invalidas digitadas pelo usuário
+- Melhorar as mensagens exibidas no menu
 - separar melhor as responsabilidades das classes
-- Configurar a senha do banco de dados com variáveis de ambiente
+- Configurar usuário e senha do banco de dados com variáveis de ambiente
 - Criar testes para validar as principais funcionalidades
 
 ## Tecnologias usadas
@@ -41,19 +43,19 @@ src/main/java/
 +-- main.java
 ```
 
-## Configuração do banco de dados
+## Banco de dados
 
-Antes de executar o projeto, crie o banco de dados e a tabela no MySQL:
+O projeto usa o banco de dados MySQL chamado `estoque`.
+
+Ao iniciar o programa, a classe `conexao` tenta criar o banco automaticamente caso ele ainda não exista. Depois disso, a classe `estoque` verifica/cria a tabela de produtos.
+
+Modelo esperado da tabela:
 
 ```sql
-CREATE DATABASE estoque;
-
-USE estoque;
-
 CREATE TABLE produto (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
-    preco DOUBLE NOT NULL,
+    preco DECIMAL(10,2) NOT NULL,
     quantidade INT NOT NULL
 );
 ```
@@ -63,7 +65,8 @@ CREATE TABLE produto (
 No arquivo `src/main/java/conexao.java`, ajuste o usuário e a senha do seu MySQL:
 
 ```java
-private static final String URL = "jdbc:mysql://localhost:3306/estoque";
+private static final String URL = "jdbc:mysql://localhost:3306/";
+private static final String BANCO = "estoque";
 private static final String USUARIO = "root";
 private static final String SENHA = "Sua_senha";
 ```

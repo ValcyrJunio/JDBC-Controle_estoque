@@ -4,6 +4,26 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 public class estoque {
+    //Cria as tabelas caso elas não existam
+    public static void criarTabelas(){
+        String sql = """
+                CREATE TABLE IF NOT EXISTS produto (
+                id INT PRIMARY KEY AUTO_INCREMENT,
+                nome VARCHAR(100) NOT NULL,
+                preco DECIMAL(10,2) NOT NULL
+                )
+                """;
+        try (
+                Connection conectar = conexao.conectar();
+                Statement statement = conexao.conectar().createStatement();
+        ){
+            statement.executeUpdate(sql);
+            System.out.println("Tabelas verificadas");
+
+        } catch (Exception e) {
+            System.out.println("Não foi possível criar a tabela: " + e);
+        }
+    }
 
     //Metodo responsavel por cadastrar um produto no banco de dados
     public static void inserirProduto(
