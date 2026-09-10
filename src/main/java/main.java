@@ -32,6 +32,8 @@ public class main {
                     "2 - Ver estoque\n" +
                     "3 - Remover produto \n" +
                     "4 - Tirar quantidade de produto\n" +
+                    "5 - Atualizar nome do produto\n" +
+                    "6 - Atualizar preço do produto\n " +
                     "0 - Sair " );
 
             //Le a opção escolhida pelo usuário
@@ -87,6 +89,19 @@ public class main {
                         System.out.println("ID ou quantidade invalida!");
                     }
                     break;
+                case 5:
+                    System.out.println("Digite o ID do produto: ");
+                    int setid = scan.nextInt();
+                    System.out.println("Digite o novo nome do produto: ");
+                    scan.nextLine();
+                    String setName = scan.nextLine();
+                    estoque.alterarNome(setid, setName);
+                case 6:
+                    System.out.println("Digite o ID do produto: ");
+                    int Setid = scan.nextInt();
+                    System.out.println("Digite o novo preço para o produto: ");
+                    Double novoPreco = scan.nextDouble();
+                    estoque.alterarPreco(Setid,novoPreco);
             }
         }
     }

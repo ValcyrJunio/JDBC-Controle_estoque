@@ -15,15 +15,17 @@ public class conexao {
 
     //Senha usada para conectar no banco
     private static final String SENHA =
-            "Sua_senha";
+            "Sua_Senha";
     //Url do banco completa
     private static final String URLBANCO = URL + BANCO;
+
+
     public static Connection conectar() throws SQLException {
 
         //Cria o banco de dados caso não exista
         try (
             Connection conexaoServidor =
-                    DriverManager.getConnection(URLBANCO,USUARIO,SENHA);
+                    DriverManager.getConnection(URL,USUARIO,SENHA);
             Statement statement = conexaoServidor.createStatement()){
             statement.executeUpdate(
                     "CREATE DATABASE IF NOT EXISTS "+ BANCO
